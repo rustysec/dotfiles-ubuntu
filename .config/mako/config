@@ -1,0 +1,6 @@
+font=FiraMono Nerd Font 12
+background-color=#282c34
+border-color=#c678dd
+text-color=#c678dd
+output=eDP-1
+default-timeout=5000
