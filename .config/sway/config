@@ -206,6 +206,8 @@ bar {
     # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
     status_command ~/.cargo/bin/i3status-rs
 
+    tray_output none
+
     colors {
         statusline $purple
         background $bg0
