@@ -3,6 +3,13 @@ theme = "native"
 icons = "awesome5"
 
 [[block]]
+block = "net"
+device = "gpd0"
+format = "VPN {ip}"
+interval = 5
+hide_inactive = true
+
+[[block]]
 block = "sound"
 format = "{volume}"
 
