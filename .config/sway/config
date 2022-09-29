@@ -4,12 +4,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-include configs/theme.conf
-include configs/bindings.conf
-include configs/autostart.conf
-include configs/inputs.conf
-include configs/rules.conf
-
 font pango:"FiraMono Nerd Font" Regular 12
 
 ### Variables
@@ -23,6 +17,13 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
+
+include configs/theme.conf
+include configs/bindings.conf
+include configs/autostart.conf
+include configs/inputs.conf
+include configs/rules.conf
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
