@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font pango:"FiraMono Nerd Font" Regular 12
+font pango:"FiraCode Nerd Font" Regular 12
 
 ### Variables
 #
@@ -23,6 +23,11 @@ include configs/bindings.conf
 include configs/autostart.conf
 include configs/inputs.conf
 include configs/rules.conf
+include configs/zoom.conf
+
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -33,14 +38,16 @@ set $menu alacritty --class launcher -e ~/pkgs/sway-launcher-desktop/sway-launch
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/warty-final-ubuntu.png fill
+output * bg /usr/share/backgrounds/gnome/blobs-l.svg fill
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output eDP-1 resolution 2160x1350 position 0,0 scale 1
+output eDP-1 resolution 2160x1350 position 1920,0 scale 1
+output DP-3 resolution 3840x2160 position 0,0 scale 2
+output DP-4 resolution 2560x1440 position -320,1080 scale 1
 
 ### Idle configuration
 #
@@ -205,9 +212,12 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    status_command ~/.cargo/bin/i3status-rs
+    status_command ~/.cargo/bin/i3status-rs ~/.config/i3status-rust/config.toml
+    # font pango:FiraCode Nerd Font, Font Awesome 5 Free 10
+    font pango:FiraCode Nerd Font, Font Awesome
 
-    tray_output none
+    # tray_output none
+    tray_output *
 
     colors {
         statusline $purple

@@ -1,38 +1,44 @@
+[theme]
 theme = "native"
-# icons = "none"
-icons = "awesome5"
+# theme = "plain"
+
+[icons]
+icons = "material-nf"
 
 [[block]]
-block = "net"
-device = "gpd0"
-format = "VPN {ip}"
-interval = 5
-hide_inactive = true
+block = "music"
+format = " $icon {$combo.str(0,20) $play |}"
 
 [[block]]
 block = "sound"
-format = "{volume}"
+# format = "$icon $volume"
 
 [[block]]
 block = "memory"
-format_mem = "{mem_used}/{mem_total}({mem_used_percents})"
-format_swap = "{swap_used}/{swap_total}({swap_used_percents})"
 display_type = "memory"
-clickable = true
-icons = true
-interval = 5
+# format_mem = "$icon $mem_free.eng(3,B,M)/$mem_total.eng(3,B,M)($mem_total_used_percents.eng(2))"
+format_mem = "$icon $mem_used_percents.eng(2) "
+# format_swap = "$icon $swap_used_percents.eng(2) "
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon  $barchart.str() $utilization.eng() "
+format_alt = "$icon $frequency.eng(){ $boost.str()|} "
 
 [[block]]
 block = "backlight"
 device = "intel_backlight"
+# format = "$icon $brightness"
 invert_icons = true
 
 [[block]]
 block = "battery"
-interval = 10
-format = "{percentage} {time}"
+format = " $icon $percentage "
+# driver = "sysfs"
+# device = "BAT0"
 
 [[block]]
 block = "time"
-format = "%a %b %d, %Y %R"
+format = " %a %b %d, %Y %R "
 timezone = "US/Pacific"
